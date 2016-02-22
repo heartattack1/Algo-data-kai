@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * 20.02.2016.
  */
-public class Stack3<E> extends StackDynamicJ<E> {
+public class Stack3<E> extends StackDynamic<E> {
 
 
     public void push(E... listOfElements){

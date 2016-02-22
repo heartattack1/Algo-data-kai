@@ -1,13 +1,14 @@
-import Stack.StackDynamicJ
-import Stack.StackStaticJ
-import java.util.*
 import Stack.Stack4
+import java.util.*
+import Stack.StackDynamic;
+import Stack.StackStatic;
+
 /**
  * 20.02.2016.
  */
 
 fun testStaticStack(){
-    var staticStack: StackStaticJ<String> = StackStaticJ()
+    var staticStack: StackStatic<String> = StackStatic()
 
     println(staticStack.isEmpty)
 }

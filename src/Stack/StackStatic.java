@@ -1,31 +1,30 @@
 package Stack;
 
 import Exception.StackIsEmptyException;
+import Exception.StackIsFullException;
 
 import java.util.Iterator;
 
 /**
  * 20.02.2016.
  */
-public class StackDynamicJ<E>{
-
+public class StackStatic<E> {
 
     private int top;
     private final int size;
     private E[] stack;
     private final static int DEFAULT_SIZE = 10;
 
-    public StackDynamicJ() {
+    public StackStatic() {
         this(DEFAULT_SIZE);
     }
 
-    public StackDynamicJ(int initSize) {
-
-        if(initSize <= 0) throw new IllegalArgumentException();
+    public StackStatic(int capacity) {
+        if(capacity <= 0) throw new IllegalArgumentException();
 
         top = -1;
-        stack = (E[]) new Object[initSize];
-        size = initSize;
+        stack = (E[]) new Object[capacity];
+        size = capacity;
     }
 
     public E pop() throws StackIsEmptyException {
@@ -35,13 +34,12 @@ public class StackDynamicJ<E>{
         return stack[top--];
     }
 
-    public void push(E element) {
-
-        if (top == stack.length - 1) resize(2 * stack.length);
-
+    public void push(E element) throws StackIsFullException {
+        if(isFull()){
+            throw new StackIsFullException();
+        }
         stack[++top] = element;
     }
-
 
     public boolean isEmpty(){
         return top == -1;
@@ -49,13 +47,6 @@ public class StackDynamicJ<E>{
 
     private boolean isFull(){
         return top == size - 1;
-    }
-
-    private void resize (int newSize)
-    {
-        E t[] = (E[]) new Object[newSize];
-        System.arraycopy(stack, 0, t, 0, top + 1);
-        stack = t;
     }
 
     public Iterator<E> iterator()
@@ -82,4 +73,9 @@ public class StackDynamicJ<E>{
             // not needed
         }
     }
+
+
+
+
+
 }
