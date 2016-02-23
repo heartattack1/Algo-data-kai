@@ -1,25 +1,64 @@
 package Stack;
 
-import Exception.StackIsEmptyException;
+import Exception.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * 20.02.2016.
  */
-public class Stack4<E> extends Stack3<E> {
-    List<E> temp = new ArrayList<>();
 
-    public E pop(String string) throws StackIsEmptyException {
-        if( true
-        // * TODO:
-        ){
-            return pop();
-        }
-        temp.add(pop());
+/*Задание 4
+*Добавить в предыдущую программу следующие возможности:
+* при удалении элемента из основного стека запросить у пользователя, что делать далее с этим элементом:
+* действительно удалить с освобождением памяти или включить его в вершину вспомогательного стека удаленных элементов.
+* при добавлении нового элемента запросить у пользователя происхождение этого элемента: действительно создание
+* нового элемента или выбор его с вершины вспомогательного стека
+*вывод содержимого вспомогательного стека удаленных элементов
+ */
+public class Stack4<E> extends Stack3<E> {
+
+    private StackDynamic<E> tempStack; // вспомогательный стек
+
+    public Stack4() {
+        tempStack = new Stack3<>();
+    }
+
+
+    /*
+    *Функция включения элемента в вершину вспомогательного стека удаленных элмента
+    *
+     */
+    public E popTemp() throws StackIsEmptyException {
+
+        tempStack.push(
+                pop()
+        );
         return null;
     }
+
+    /*
+    *при добавлении нового элемента запросить у пользователя происхождение этого элемента: действительно создание
+    * нового элемента или выбор его с вершины вспомогательного стека
+     */
+
+    public void pushTemp() throws StackIsEmptyException {
+
+        push(
+                tempStack.pop()
+        );
+
+    }
+
+    /*
+    *Для вывода на экран элементов вспомогательного стека
+     */
+    public Iterator<E> iterator(){
+        return tempStack.iterator();
+    }
+
 
 
 }
