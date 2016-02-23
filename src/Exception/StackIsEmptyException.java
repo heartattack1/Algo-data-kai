@@ -5,5 +5,11 @@ package Exception;
  */
 public class StackIsEmptyException extends Exception {
 
+    public StackIsEmptyException() {
+        super();
+    }
 
+    public StackIsEmptyException(String message) {
+        super(message);
+    }
 }

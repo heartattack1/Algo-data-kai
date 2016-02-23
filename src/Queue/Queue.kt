@@ -11,6 +11,7 @@ package Queue
  */
 
 
-class Queue {
+class Queue<E>(maxSize: Int) : IterableCircularQueue<E>(maxSize) {
+
 
 }
